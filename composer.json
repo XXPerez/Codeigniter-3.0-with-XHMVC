@@ -1,0 +1,9 @@
+{
+	"name" : "CodeIgniter",
+	"autoload" : {
+		"classmap" : [
+			"apps/demo/application/modules/mymodules"
+		]
+	},
+	"minimum-stability" : "stable"
+}

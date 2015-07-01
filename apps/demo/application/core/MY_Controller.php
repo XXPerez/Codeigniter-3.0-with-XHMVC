@@ -1,0 +1,1 @@
+<?phprequire_once COMMONPATH . 'core/Core_Controller.php';class MY_Controller extends Core_Controller{    /**     * Constructor.      */    public function __construct()    {        parent::__construct();                // Enable profiler by definition        if (defined('DEBUGAPP') && DEBUGAPP)            $this->output->enable_profiler(true);    }}

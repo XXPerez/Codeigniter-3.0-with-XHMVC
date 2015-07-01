@@ -1,0 +1,79 @@
+Copy Xcache folder to application/libraries
+Copy application/libraries/Xcache/xcacheconf.php to application/config
+
+Add to your controller/model:
+
+	$this->load->library('Xcache/XDBCache');
+
+FOR ACTIVERECORD:
+Check your database configuration in application/config/database.php, be sure activerecord is TRUE
+ADD AFTER LIBRARY LOAD:
+
+	$result = $this->xdbcache->cache('MyQueryGroup','MyID')->where('id',1)->get('mytable');
+	// Change mytable for your existing table
+	// Cange where clause for your desired clause
+	// Change MyID for specific where in text (normally will be the params recieved in the model/method or controller/method or get/post.
+
+FOR SQL COMMANDS:
+ADD AFTER LIBRARY LOAD:
+
+	$result = $this->xdbcache->getQuery('MyQueryGroup','MyID','SELECT * FROM mytable where id = 1');
+	// Change mytable for your existing table
+	// Cange where clause for your desired clause
+	// Change MyID for specific where in text (normally will be the params recieved in the model/method or controller/method or get/post.
+	// MyQueryGroup is defined under cache_dbquery group in application/config/xcacheconf.php. Create another and/or change expiration time.
+
+Activate profiler to see what are happening:  
+	$this->output->enable_profiler(true);
+
+Works under Codeigniter 2.x with and without HMVC.
+Be sure you have pemissions under application/../cache (it's created in same level as application and system folder). Can be changed in xcacheconf.php file.
+
+
+INSTRUCTIONS in XDBCache.php:
+
+* XDBCache
+ *
+ * Database cache system
+ * 
+ * Uses identifiers to allow different expiration time for each query
+ * 
+ * Load library: $this->load->library('XCache/XDBCache');
+ *
+ * Use with getQuery (SQL direct command): 
+ *      $result = $this->xdbcache->getQuery('MyQueryGroup','ID=1 order by ID','SELECT * FROM users where id = 1');
+ * 
+ *		Params;
+ *			MyQueryGroup - Group Identifier. Is the group of query to execute. Normally refers to the model method.  See this group in xcacheconf file.
+ *			'ID=1 order by ID' - Unique ID for this query, allow to cache each different ID's and orders.
+ *				For complex queries, put all where+sort+limit clause. XCache will make an unique ID (md5) of all the string.
+ * 
+ * Use with ActiveRecord: 
+ *      $result = $this->xdbcache->cache('MyqueryGroup','ID=1 order by ID')->where('id',1)->get('users');
+ * 
+ * More examples:
+ * 		$result = $this->xdbcache->getQuery('GetTest1','ID=1 order by ID','SELECT * FROM xdbcache_test where id = 1 order by id');
+ *		$result = $this->xdbcache->cache('GetTest2','ID=1 order by ID')->where('id',1)->order_by('id')->get('xdbcache_test');
+ *		
+ * Return:
+ *		Allways return CI_DB_result object, you can obtain:
+ *			$result->result_array() // Return an array of elements
+ *			$result->result_object() // Return an array of objects
+ *			$result->result() // Return default result (object)
+ *			$result->num_rows() // Return result rows fetched
+ * 
+ * Delete cache:
+ *		All query group:
+ *			$this->xdbcache->deleteCache('MyQueryGroup'); 
+ *		Only an specific query:
+ *			$this->xdbcache->deleteCache('MyQueryGroup','ID=1 order by ID'); 
+ *
+ * Clean cache:
+ *		All query group:
+ *			$this->xdbcache->cleanCache(); 
+ * 
+ * Select another DB:
+ *      $this->xdbcache->useDB('otherDB'); // As configured in config/database.php
+ * 
+ * Disable cache for ActiveRecord query:
+ *      $result = $this->xdbcache->nocache()->where('id',1)->order_by('id')->get('xdbcache_test');

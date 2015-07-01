@@ -1,0 +1,1 @@
+<?php(defined('BASEPATH')) OR exit('No direct script access allowed');/* load the MX_Loader class */require COMMONPATH . "core/Core_Loader.php";class MY_Loader extends Core_Loader{    public function __construct()    {	parent::__construct();    }}

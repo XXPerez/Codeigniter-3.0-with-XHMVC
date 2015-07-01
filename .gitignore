@@ -45,3 +45,4 @@ Temporary Items
 /apps/demo/application/logs/
 /nbproject/
 /nbproject
+/vendor/composer

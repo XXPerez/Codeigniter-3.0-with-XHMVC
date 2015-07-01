@@ -20,6 +20,8 @@ Edit the composer.json to add any package that you want. You can use it in any c
 }
 ```
 
+To use composer, goto base dir and type:  composer install
+
 ## Installation
 
 XHMVC is ready-to-go, you only need to extract to any directory under a document root of your choice.
@@ -28,6 +30,8 @@ Needed: Apache (mod_rewrite enabled for a ready-to-go functionality) + PHP (5.3)
 
   * Extract all files under your web workspace (as configured in your Xampp/Wampp), extract, for example, as 'xhmvc'
   * Browse demo as: http://localhost/xhmvc/applications/demo/www
+
+
 
 ## Other functions installed
 

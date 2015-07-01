@@ -41,11 +41,7 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
-/apps/demo/cache
-/apps/demo/application/logs
-/nbproject/private/
+/apps/demo/cache/*
+/apps/demo/application/logs/*
+/nbproject/*
 /nbproject
-/nbproject
-/nbproject/project.xml
-/nbproject/private
-/nbproject/project.properties

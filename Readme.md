@@ -2,7 +2,12 @@
 
 ## What is Cross Modules
 
-Based on Wiredesign HMVC, (Hiererchical Model/View/Contoller), XHMVC allow to have common modules shared betweeen all applications. Not only to share common modules between apps located under /apps directory, also you can re-use any module between different projects only making copy/paste.
+Based on Wiredesign HMVC, (Hiererchical Model/View/Contoller), XHMVC allow to have common modules shared betweeen all applications.
+All the modules can have all components under only one directory: config, controllers, helpers, languages, libraries, models, views
+This allow to re-use a module component in other projects, only with a simple copy/paste !!
+
+ Modules can be shared between different applications located under /apps directory.
+
 
 Take alook to this explain:  http://xhmvc.4amics.com/applications/demo/www/user_guide/
 

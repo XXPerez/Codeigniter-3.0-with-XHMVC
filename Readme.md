@@ -1,7 +1,9 @@
 # Cross Modules for Codeigniter 3.0
 
 THIS IS THE LAST VERSION COMPATIBLE WITH 2.2/2.3 
+
 NEXT VERSION, compatible with CI 3.0.4, can be found in ... 
+
 https://github.com/XMadMax/Codeigniter-3-with-XHMVC
 
 ## What is Cross Modules
